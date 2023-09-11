@@ -77,7 +77,8 @@ public static double calculateStandardDeviation(double[] scores,double mean){
         sumSquaredDifferences = difference * difference;
         double standardDeviation = sumSquaredDifferences / scores.length;
     }
-    return sumSquaredDifferences / scores.length;
+    double standardDeviation = Math.sqrt(sumSquaredDifferences / scores.length);
+    return standardDeviation;
 }
 }
 
