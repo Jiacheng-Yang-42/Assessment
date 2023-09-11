@@ -28,17 +28,11 @@ public class Assignment{
 }
 //F4:Prints the assignment name after the "Student's assignment" score.
 System.out.println("Assignment Name: " + assignmentName);
-//F5:Print the highest and lowest scores.
 double highestScore =findHighestScore(studentScores);
 double lowestScore =findLowestScore(studentScores);
-System.out.println("Highest Score: " + highestScore);
-System.out.println("Lowest Score: " + lowestScore);
 scanner.close();
-//F6:Print the mean and standard deviation of the scores.
 double mean= calculateMean(studentScores);
 double standardDeviation= calculateStandardDeviation(studentScores,mean);
-System.out.println("Mean: " + mean);
-System.out.println("Standard Deviation: " + standardDeviation);
 scanner.close();
 }
 //Algorithm 1:Find Highestscore.
@@ -49,6 +43,7 @@ for(double score:scores){
        highestScore = score; 
     }
 }
+System.out.println("Highest Score: " + highestScore);//F5:Print the highest scores.
 return highestScore;
 //Algorithm 1:Find Lowestscore.
 }
@@ -59,6 +54,7 @@ for(double score:scores){
         lowestScore = score;
     }
 }
+System.out.println("Lowest Score: " + lowestScore);//F5:Print the lowest scores.
 return lowestScore;
 }
 //Algorithm 2:Calculate Mean.
@@ -67,7 +63,9 @@ public static double calculateMean(double[] scores){
     for(double score:scores){ 
         sum += score;
     }
-    return sum / scores.length;
+    double mean = sum /scores.length;
+    System.out.println("Mean: " + mean);//F6:Print the mean scores.
+    return mean;
     }
 //Algorithm 2:Calculate Standard Deviation.
 public static double calculateStandardDeviation(double[] scores,double mean){
@@ -78,6 +76,7 @@ public static double calculateStandardDeviation(double[] scores,double mean){
         double standardDeviation = sumSquaredDifferences / scores.length;
     }
     double standardDeviation = Math.sqrt(sumSquaredDifferences / scores.length);
+    System.out.println("Standard Deviation: " + standardDeviation);//F6:Print the standard deviation of the scores.
     return standardDeviation;
 }
 }
