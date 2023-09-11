@@ -1,0 +1,24 @@
+Start Creat
+Algorithm calculateMean(scores)
+Assuming the initial value of the sum is 0
+Scores will be iterated
+Add up all the scores
+The mean is equal to the sum of the scores divided by the length of the scores
+Output print mean
+return mean
+End Algorithm 
+
+
+
+
+Start Creat
+Algorithm calculateStandardDeviation(scores, mean)
+Assuming the initial value of the sum of squared differences is 0.
+Scores will be iterated
+Difference is equal to the score minus the mean
+Sum of squared differences equals difference multiplied difference
+Calculate the sum of squared differences divided by the number of scores.
+calculate the square root of the sum of squared differences divided by the number of scores.
+Output print StandardDeviation
+return standardDeviation
+End Algorithm 

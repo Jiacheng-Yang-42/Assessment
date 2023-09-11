@@ -1,0 +1,20 @@
+Start Creat
+Algorithm findHighestScore(scores)
+Assuming the first score is the highest score.
+Scores will be iterated
+If in each iteration, the current score is greater than the previous one, then the current score is the highest Score.
+Output print Highest Score
+return highestScore
+End Algorithm 
+
+
+
+
+Start Creat
+Algorithm findLowestScore(scores)
+Assuming the first score is the lowest score
+Scores will be iterated
+f in each iteration, the current score is less than the previous one, then the current score is the lowest score
+Output print Lowest Score
+return lowestScore
+End Algorithm 
