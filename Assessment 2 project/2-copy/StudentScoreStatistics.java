@@ -79,15 +79,19 @@ for (int i = 0; i < n - 1; i++) {
         }
     }
 }
-for (int i = 0; i < Math.min(5, n); i++) {
-    Student student = studentList.get(i);
-}
 System.out.println("Top 5 Students with the Highest Total Marks:");
-for (int i = n - 1; i >= Math.max(0, n - 5); i--) {
-            Student student = studentList.get(i);
-        }
+int top = Math.min(5, studentList.size());
+for (int i = 0; i < top; i++) {
+    Student student = studentList.get(i);
+    printStudentInfo(student); 
+}
 System.out.println("Top 5 Students with the Lowest Total Marks:");
+int bottom = Math.min(5, studentList.size());
+for (int i = n - 1; i >= n - bottom; i--) {
+    Student student = studentList.get(i);
+    printStudentInfo(student);
     }
+}
 }
  class Student{//Create a new Student object, including the student's name, student ID, assignment marks, and total marks.
      private String name;
