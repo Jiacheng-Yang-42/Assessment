@@ -2,8 +2,8 @@
 /**
  * Write a description of class Assessment here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Jiacheng Yang)
+ * @version (23882003)
  */
 import java.util.Scanner;
 import java.io.*;
@@ -53,15 +53,42 @@ public class StudentScoreStatistics{
         System.out.println("Assignment3: " + assignment3);
         System.out.println("Totals: " + totalMark);//F2:Print Total Marks.
         System.out.println();
-   }
+    } 
   }
-  }
+ }
    }
   catch (FileNotFoundException e) {
     System.out.println("File not found: " + "prog5001_students_grade_2022.csv");
   }
-  System.out.println("Students with a total mark below the specified threshold: ");
+  for (Student student : studentList) {
+            System.out.println("Name: " + student.getName());
+            System.out.println("ID: " + student.getID());
+            System.out.println("Assignment1: " + student.getAssignment1());
+            System.out.println("Assignment2: " + student.getAssignment2());
+            System.out.println("Assignment3: " + student.getAssignment3());
+            System.out.println("Total Mark: " + student.getTotalMark());
+            System.out.println();
  }
+ int n = studentList.size();
+for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - i - 1; j++) {
+        if (studentList.get(j).getTotalMark() > studentList.get(j + 1).getTotalMark()) {
+             Student tempStudent = studentList.get(j);
+            studentList.set(j, studentList.get(j + 1));
+            studentList.set(j + 1, tempStudent);
+        }
+    }
+}
+for (int i = 0; i < Math.min(5, n); i++) {
+    Student student = studentList.get(i);
+}
+System.out.println("Top 5 Students with the Highest Total Marks:");
+for (int i = n - 1; i >= Math.max(0, n - 5); i--) {
+            Student student = studentList.get(i);
+        }
+System.out.println("Top 5 Students with the Lowest Total Marks:");
+    }
+}
  class Student{
      private String name;
      private String id;
@@ -83,19 +110,20 @@ public String getName(){
 public String getID(){
     return id;
 }
-public double getAssignemnt1(){
+public double getAssignment1(){
     return assignment1;
 }
-public double getAssignemnt2(){
+public double getAssignment2(){
     return assignment2;
 }
-public double getAssignemnt3(){
+public double getAssignment3(){
     return assignment3;
 }
 public double getTotalMark(){
     return totalMark;
 }
 }
+
  
 
 
