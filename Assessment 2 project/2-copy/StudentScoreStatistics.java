@@ -13,10 +13,10 @@ public class StudentScoreStatistics{
         Scanner userInput = new Scanner(System.in);
         System.out.print("Please enter the file name: ");//F1:The user will provide the file name.
         String fileName = userInput.nextLine();
-        System.out.print("Please enter the threshold: ");
+        System.out.print("Please enter the threshold: ");//F3:User inputs a threshold.
         double threshold = userInput.nextDouble();
         userInput.nextLine();
-        ArrayList<Student> studentList = new ArrayList<>();
+        ArrayList<Student> studentList = new ArrayList<>();//Create an empty student list named studentList.
     try (Scanner scanner = new Scanner(new File("prog5001_students_grade_2022.csv"))){//F1:reads the unit name and students' marks from a given text file.
             int lineCount = 0;
      while (scanner.hasNextLine()) {//Read file line by line.
@@ -45,22 +45,22 @@ public class StudentScoreStatistics{
             assignment3 = Double.parseDouble(parts[5]);
         }
         double totalMark = assignment1 + assignment2 + assignment3;//F2: calculates the total mark.
-        if (totalMark < threshold){
+        if (totalMark < threshold){//F3:If the student's total score is less than the threshold, print the following.
         System.out.println("Student " + (lineCount - 2) + "Name: " + studentName);//F2:Print Student Names.
         System.out.println("Student " + (lineCount - 2) + "ID: " + studentID);//F2:Print Student ID.
         System.out.println("Assignment1: " + assignment1 + "  ");
         System.out.println("Assignment2: " + assignment2 + "  ");
         System.out.println("Assignment3: " + assignment3);
         System.out.println("Totals: " + totalMark);//F2:Print Total Marks.
-        System.out.println();
+        System.out.println();//After printing the information of each student, add a blank line.
     } 
   }
  }
    }
   catch (FileNotFoundException e) {
-    System.out.println("File not found: " + "prog5001_students_grade_2022.csv");
+    System.out.println("File not found: " + "prog5001_students_grade_2022.csv");//When the code captures an exception, it will display "File not found: prog5001_students_grade_2022.csv" to indicate that the file was not found.
   }
-  for (Student student : studentList) {
+  for (Student student : studentList) {//The code iterates through the data stored in the student list, ensuring that each student's detailed information in the list is displayed in the correct format.
             System.out.println("Name: " + student.getName());
             System.out.println("ID: " + student.getID());
             System.out.println("Assignment1: " + student.getAssignment1());
@@ -89,7 +89,7 @@ for (int i = n - 1; i >= Math.max(0, n - 5); i--) {
 System.out.println("Top 5 Students with the Lowest Total Marks:");
     }
 }
- class Student{
+ class Student{//Create a new Student object, including the student's name, student ID, assignment marks, and total marks.
      private String name;
      private String id;
      private double assignment1;
