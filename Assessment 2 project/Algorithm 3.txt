@@ -1,9 +1,9 @@
- Algorithm 3
-1.Create an empty student list named studentList.
-2.User inputs the threshold value and stores it.
-3.Read student data from the specified file.
-4.Parse student information and calculate the total score.
-5.Create a new Student object, including the student's name, student ID, assignment marks, and total marks.
-6.If the student's total marks is less than the threshold, add this Student object to the studentList.
-7.Print the list of students whose total marks is less than the threshold. Include the student's name, ID, assignment marks, and total marks.
-8.Finish
+Algorithm 3
+Start
+1. Add the function of user input threshold to the menu.
+2. Add a method to define a method for checking students below the threshold in the student list.
+3. If the student score is less than the threshold, print the result:
+student name
+Student ID
+student total marks
+End

@@ -12,25 +12,53 @@ public class StudentScoreStatistics{
     public static void main(String[] args){
          ArrayList<Student> studentList = new ArrayList<>();//Create an empty student list named studentList.
          Scanner userInput = new Scanner(System.in);
-          while (true) {
-            System.out.println("Menu:");
-            System.out.println("1.View student grades");
-            System.out.println("2.View Students Below Threshold");
-            System.out.println("3.View Students Below Threshold");
-            System.out.println("4.View the top 5 students with the highest total marks");
-            System.out.println("5.View the top 5 students with the lowest total marks");
-            System.out.println("6. Exit");
-            System.out.print("Enter your choose: ");
-            int choose = userInput.nextInt();
+         while (true) {//F5:Menu System.
+        System.out.println("Menu:");
+        System.out.println("1. View student grades");
+        System.out.println("2. View Students Below Threshold");
+        System.out.println("3. View the top 5 students with the highest total marks");
+        System.out.println("4. View the top 5 students with the lowest total marks");
+        System.out.println("5. Exit");
+        System.out.println();
+        System.out.println();
+        System.out.print("Enter your choose: ");
+        int choose = userInput.nextInt();
+        
+        if (choose == 1) {
+            StudentData(studentList);
+        } else if (choose == 2) {
+            if (studentList.isEmpty()) {
+                System.out.println("Please check all student grades first (Option 1).");
+            } else {
+                System.out.print("Please enter the threshold: ");//F3:User inputs a threshold.
+                double threshold = userInput.nextDouble();
+                userInput.nextLine();
+                viewStudentsBelowThreshold(threshold, studentList);
+            }
+        } else if (choose == 3) {
+            if (studentList.isEmpty()) {
+                System.out.println("Please check all student grades first (Option 1).");
+            } else {
+                viewTop5Students(studentList);
+            }
+        } else if (choose == 4) {
+            if (studentList.isEmpty()) {
+                System.out.println("Please check all student grades first (Option 1).");
+            } else {
+                viewLowest5Students(studentList);
+            }
+        } else if (choose == 5) {
+            System.out.println("End");
+            System.exit(0);
+        } else {
+            System.out.println("Invalid choice. Please try again.");
+        }
     }
-}
+} 
      public static void StudentData(ArrayList<Student> studentList) { 
         Scanner userInput = new Scanner(System.in);
         System.out.print("Please enter the file name: ");//F1:The user will provide the file name.
         String fileName = userInput.nextLine();
-        System.out.print("Please enter the threshold: ");//F3:User inputs a threshold.
-        double threshold = userInput.nextDouble();
-        userInput.nextLine();
     try (Scanner scanner = new Scanner(new File(fileName))){//F1:reads the unit name and students' marks from a given text file.
             int lineCount = 0;
      while (scanner.hasNextLine()) {//Read file line by line.
@@ -58,8 +86,7 @@ public class StudentScoreStatistics{
     if(parts.length >=6 && !parts[5].isEmpty()){
             assignment3 = Double.parseDouble(parts[5]);
         }
-        double totalMark = assignment1 + assignment2 + assignment3;//F2: calculates the total mark.
-        if (totalMark < threshold){//F3:If the student's total score is less than the threshold, print the following.
+        double totalMark = assignment1 + assignment2 + assignment3;//F2: calculates the total mark..
         System.out.println("Student " + (lineCount - 2) + "Name: " + studentName);//F2:Print Student Names.
         System.out.println("Student " + (lineCount - 2) + "ID: " + studentID);//F2:Print Student ID.
         System.out.println("Assignment1: " + assignment1 + "  ");
@@ -72,19 +99,10 @@ public class StudentScoreStatistics{
     } 
   }
  }
-   }
   catch (FileNotFoundException e) {
     System.out.println("File not found: " + "prog5001_students_grade_2022.csv");//When the code captures an exception, it will display "File not found: prog5001_students_grade_2022.csv" to indicate that the file was not found.
   }
-  for (Student student : studentList) {//The code iterates through the data stored in the student list, ensuring that each student's detailed information in the list is displayed in the correct format.
-            System.out.println("Name: " + student.getName());
-            System.out.println("ID: " + student.getID());
-            System.out.println("Assignment1: " + student.getAssignment1());
-            System.out.println("Assignment2: " + student.getAssignment2());
-            System.out.println("Assignment3: " + student.getAssignment3());
-            System.out.println("Total Mark: " + student.getTotalMark());
-            System.out.println();
- }
+// Sort the student list by total marks.
  int n = studentList.size();
 for (int i = 0; i < n - 1; i++) {
     for (int j = 0; j < n - i - 1; j++) {
@@ -95,59 +113,57 @@ for (int i = 0; i < n - 1; i++) {
         }
     }
 }
-System.out.println("Top 5 Students with the Highest Total Marks:");
-int top = Math.min(5, studentList.size());
-for (int i = 0; i < top; i++) {
-    Student student = studentList.get(i);
-    printStudentInfo(student); 
+// Print student data.
+for (Student student : studentList) {//The code iterates through the data stored in the student list, ensuring that each student's detailed information in the list is displayed in the correct format.
+            System.out.println("Name: " + student.getName());
+            System.out.println("ID: " + student.getID());
+            System.out.println("Assignment1: " + student.getAssignment1());
+            System.out.println("Assignment2: " + student.getAssignment2());
+            System.out.println("Assignment3: " + student.getAssignment3());
+            System.out.println("Total Mark: " + student.getTotalMark());
+            System.out.println();
+ }
 }
-System.out.println("Top 5 Students with the Lowest Total Marks:");
-int bottom = Math.min(5, studentList.size());
-for (int i = n - 1; i >= n - bottom; i--) {
-    Student student = studentList.get(i);
-    printStudentInfo(student);
+// F3:View students below the threshold
+public static void viewStudentsBelowThreshold(double threshold, ArrayList<Student> studentList) {
+System.out.print("Students below the threshold include: ");
+System.out.println(); 
+for (Student student : studentList) {
+            if (student.getTotalMark() < threshold) {
+             System.out.println("Name: " + student.getName());
+             System.out.println("ID: " + student.getID());
+             System.out.println("Total Mark: " + student.getTotalMark());
+             System.out.println();         
     }
 }
-public static void printStudentInfo(Student student) {
-        System.out.println("Name: " + student.getName());
-        System.out.println("ID: " + student.getID());
-         System.out.println("Total Mark: " + student.getTotalMark());
+// F4:View the top 5 students with the highest scores in the total marks.
+}
+public static void viewTop5Students(ArrayList<Student> studentList) {
+        System.out.println("Top 5 Students with the Highest Total Marks:");
         System.out.println();
+        int n = studentList.size();
+        int bottom = Math.min(5, studentList.size());
+        for (int i = n - 1; i >= n - bottom; i--) {
+            Student student = studentList.get(i);
+            System.out.println("Name: " + student.getName());
+             System.out.println("ID: " + student.getID());
+             System.out.println("Total Mark: " + student.getTotalMark());
+             System.out.println();   
+        }
     }
-}
- class Student{//Create a new Student object, including the student's name, student ID, assignment marks, and total marks.
-     private String name;
-     private String id;
-     private double assignment1;
-     private double assignment2;
-     private double assignment3;
-     private double totalMark;
-public Student(String name, String id, double assignment1, double assignment2, double assignment3, double totalMark){
-    this.name = name;
-    this.id = id;
-    this.assignment1 = assignment1;
-    this.assignment2 = assignment2;
-    this.assignment3 = assignment3;
-    this.totalMark = totalMark;
-}
-public String getName(){
-    return name;
-}
-public String getID(){
-    return id;
-}
-public double getAssignment1(){
-    return assignment1;
-}
-public double getAssignment2(){
-    return assignment2;
-}
-public double getAssignment3(){
-    return assignment3;
-}
-public double getTotalMark(){
-    return totalMark;
-}
+// F4:View the top 5 students with the lowest scores in the total marks.
+public static void viewLowest5Students(ArrayList<Student> studentList) {
+        System.out.println("Top 5 Students with the Lowest Total Marks:");
+        System.out.println();
+        int top = Math.min(5, studentList.size());
+        for (int i = 0; i < top; i++) {
+            Student student = studentList.get(i);
+            System.out.println("Name: " + student.getName());
+             System.out.println("ID: " + student.getID());
+             System.out.println("Total Mark: " + student.getTotalMark());
+             System.out.println();   
+        }
+    }
 }
 
  
