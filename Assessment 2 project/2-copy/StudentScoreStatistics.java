@@ -10,14 +10,28 @@ import java.io.*;
 import java.util.ArrayList;
 public class StudentScoreStatistics{
     public static void main(String[] args){
+         ArrayList<Student> studentList = new ArrayList<>();//Create an empty student list named studentList.
+         Scanner userInput = new Scanner(System.in);
+          while (true) {
+            System.out.println("Menu:");
+            System.out.println("1.View student grades");
+            System.out.println("2.View Students Below Threshold");
+            System.out.println("3.View Students Below Threshold");
+            System.out.println("4.View the top 5 students with the highest total marks");
+            System.out.println("5.View the top 5 students with the lowest total marks");
+            System.out.println("6. Exit");
+            System.out.print("Enter your choose: ");
+            int choose = userInput.nextInt();
+    }
+}
+     public static void StudentData(ArrayList<Student> studentList) { 
         Scanner userInput = new Scanner(System.in);
         System.out.print("Please enter the file name: ");//F1:The user will provide the file name.
         String fileName = userInput.nextLine();
         System.out.print("Please enter the threshold: ");//F3:User inputs a threshold.
         double threshold = userInput.nextDouble();
         userInput.nextLine();
-        ArrayList<Student> studentList = new ArrayList<>();//Create an empty student list named studentList.
-    try (Scanner scanner = new Scanner(new File("prog5001_students_grade_2022.csv"))){//F1:reads the unit name and students' marks from a given text file.
+    try (Scanner scanner = new Scanner(new File(fileName))){//F1:reads the unit name and students' marks from a given text file.
             int lineCount = 0;
      while (scanner.hasNextLine()) {//Read file line by line.
         lineCount++;
@@ -53,6 +67,8 @@ public class StudentScoreStatistics{
         System.out.println("Assignment3: " + assignment3);
         System.out.println("Totals: " + totalMark);//F2:Print Total Marks.
         System.out.println();//After printing the information of each student, add a blank line.
+        Student student = new Student(studentName, studentID, assignment1, assignment2, assignment3, totalMark);
+        studentList.add(student);
     } 
   }
  }
@@ -92,6 +108,12 @@ for (int i = n - 1; i >= n - bottom; i--) {
     printStudentInfo(student);
     }
 }
+public static void printStudentInfo(Student student) {
+        System.out.println("Name: " + student.getName());
+        System.out.println("ID: " + student.getID());
+         System.out.println("Total Mark: " + student.getTotalMark());
+        System.out.println();
+    }
 }
  class Student{//Create a new Student object, including the student's name, student ID, assignment marks, and total marks.
      private String name;
