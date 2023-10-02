@@ -1,0 +1,29 @@
+Algorithm 4
+
+Top 5 Students with the Highest Total Marks
+Start
+1.Add the function of user input to view the top five students with the highest total marks in the menu.
+2.Add a definition to the student list to view the 5 students with the highest total marks.
+3.First, ensure there are at least 5 students. Ensure not to exceed the boundary of the student list.
+4.Start from the bottom of the student list.
+5.Start the loop. If the student's mark is greater than the previous student's mark, keep it. 
+6.In each iteration of the loop, reduce the student list by one until the loop condition is not met.
+7..Print the results:
+Student name
+Student ID
+Student total marks
+End
+
+Top 5 Students with the Lowest Total Marks
+Start
+1.Add the user input function to view the top five students with the lowest total marks in the menu.
+2.Add a definition to the student list to view the 5 students with the lowest total marks.
+3.First, ensure there are at least 5 students. Ensure not to exceed the boundary of the student list.
+4.Start from index 0.
+5.Start the loop. If the student's mark is less than the previous student's mark, keep it.
+6.In each iteration of the loop, increase the student list by one until it exceeds the number of students in the list.
+7.Print the results:
+Student name
+Student ID
+Student total marks
+End
